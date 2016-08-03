@@ -1,12 +1,13 @@
 //
 //  ViewController.m
-//  ZFSeatsSelection
+//  ZFSeatSelection
 //
-//  Created by MAC_PRO on 16/8/3.
-//  Copyright © 2016年 MAC_PRO. All rights reserved.
+//  Created by qq 316917975  on 16/7/7.
+//
 //
 
 #import "ViewController.h"
+#import "ZFSeatViewController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+- (IBAction)btnAction:(id)sender {
+    
+    ZFSeatViewController *seatsVC = [[ZFSeatViewController alloc]init];
+    
+    [self.navigationController pushViewController:seatsVC animated:YES];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
