@@ -194,10 +194,10 @@
     }
     //更新hallLogo
     self.hallLogo.y = scrollView.contentOffset.y;
-    self.hallLogo.centerX = self.seatView.centerX;
+    
     //更新中线
     self.centerLine.height = CGRectGetMaxY(self.seatView.frame) + 2 * ZFSmallMargin;
-    self.centerLine.centerX = self.seatView.centerX;
+    
     if (scrollView.contentOffset.y < - ZFseastsColMargin ) {
         self.centerLine.y = self.seatView.y - ZFseastsColMargin + ZFCenterLineY;
     }else{
@@ -206,6 +206,7 @@
     }
     // 更新索引条
     self.rowindexView.x = scrollView.contentOffset.x + ZFseastMinW_H;
+    
     
     //更新indicator大小位置
     [self.indicator updateMiniIndicator];
@@ -216,7 +217,7 @@
 }
 
 #pragma mark - <UIScrollViewDelegate>
--(void)scrollViewDiZFoom:(UIScrollView *)scrollView{
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView{
     
     [[self class] cancelPreviousPerformRequestsWithTarget:self.indicator selector:@selector(indicatorHidden) object:nil];
     self.centerLine.centerX = self.seatView.centerX;
@@ -226,8 +227,8 @@
     [self.indicator updateMiniIndicator];
 }
 
--(void)scrollViewDidEnZFooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{
-    
+-(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{
+     
     self.hallLogo.centerX = self.seatView.centerX;
     self.hallLogo.y = scrollView.contentOffset.y;
     self.centerLine.centerX = self.seatView.centerX;
