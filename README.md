@@ -27,7 +27,7 @@
 ## 前言（Preface）
 
    高仿猫眼app选座（选票）模块
-   之前对这些模块做了初步了解没找到合适的开源框架，有一些都是简单的小demo更没有任何效果，代码也是惨不忍睹看的一头雾水，索性就自己捣鼓着造一个车轮😄，最终花了五天时间基本上搞定了，本想全用绘图方式全部构建该模块分装个小框架，可由于本人独立开发，时间有限，马上又要着手新项目就此作罢，这种模块用的比较少，目前代码结构也已经比较清晰就凑合着用吧，😄，觉得好就给star✨
+   之前对这些模块做了初步了解没找到合适的开源框架，有一些都是简单的小demo更没有任何效果，代码也是惨不忍睹看的一头雾水，索性就自己捣鼓着造一个车轮😄，最终花了五天时间基本上搞定了，这种模块用的比较少，目前代码结构也已经比较清晰就凑合着用吧，😄，觉得好就给star✨
 
 (High imitation cat app seat selection (vote) module
 Before on these modules do the preliminary understanding did not find a suitable open source framework, some are simple little demo and no any effect, code is horrible to see befuddled, simply to fiddle with a made a wheels and eventually spent five days basically done, this to the drawing way build the module packaging framework, due to its own independent development, time is limited, once again set out to new projects this forget about it, this module is used less, the code structure has also been relatively clear is used to improvise, feel good to star
