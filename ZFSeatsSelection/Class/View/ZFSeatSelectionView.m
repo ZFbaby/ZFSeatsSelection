@@ -81,6 +81,7 @@
 -(void)initScrollView{
     UIScrollView *seatScrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.seatScrollView = seatScrollView;
+    self.seatScrollView.decelerationRate = UIScrollViewDecelerationRateFast;
     self.seatScrollView.delegate = self;
     self.seatScrollView.showsHorizontalScrollIndicator = NO;
     self.seatScrollView.showsVerticalScrollIndicator = NO;
@@ -129,7 +130,7 @@
 }
 
 -(void)initSeatsView:(NSMutableArray *)seatsArray{
-    typeof(self) weakSelf = self;
+   __weak typeof(self) weakSelf = self;
     ZFSeatsView *seatView = [[ZFSeatsView alloc]initWithSeatsArray:seatsArray maxNomarWidth:self.width seatBtnActionBlock:^(ZFSeatButton *seatbtn) {
         [weakSelf.indicator updateMiniImageView];
         if (seatbtn.selected) {
