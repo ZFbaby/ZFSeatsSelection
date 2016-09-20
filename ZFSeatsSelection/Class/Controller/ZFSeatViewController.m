@@ -37,7 +37,7 @@
     HUD.tintColor = [UIColor blackColor];
     [self.view addSubview:HUD];
     [HUD showAnimated:YES];
-    
+    __weak typeof(self) weakSelf = self;
     //模拟延迟加载
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"seats %zd.plist",arc4random_uniform(5)] ofType:nil];
@@ -55,7 +55,7 @@
 
 
         //数据回来初始化选座模块
-        [self initSelectionView:seatsModelArray];
+        [weakSelf initSelectionView:seatsModelArray];
     });
     
 }
