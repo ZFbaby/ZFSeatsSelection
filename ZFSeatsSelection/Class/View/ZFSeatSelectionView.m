@@ -53,7 +53,7 @@
         [self initSeatsView:seatsArray];
         [self initindicator:seatsArray];
         [self initRowIndexView:seatsArray];
-        [self initcenterLine];
+        [self initcenterLine:seatsArray];
         [self inithallLogo:hallName];
         [self  startAnimation];//开场动画
     }
@@ -62,14 +62,14 @@
 
 -(NSMutableArray *)seatBtns{
     if (!_seatBtns) {
-
+        
         _seatBtns = [NSMutableArray array];
     }
     return _seatBtns;
 }
 -(void)startAnimation{
     
-    [UIView animateWithDuration:0.6 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.5 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
         CGRect zoomRect = [self _zoomRectInView:self.seatScrollView forScale:ZFseastNomarW_H / self.seatView.seatBtnHeight withCenter:CGPointMake(self.seatView.seatViewWidth / 2, 0)];
         [self.seatScrollView zoomToRect:zoomRect animated:NO];
     } completion:nil];
@@ -108,11 +108,11 @@
     self.rowindexView = rowindexView;
     [self.seatScrollView addSubview:rowindexView];
 }
--(void)initcenterLine{
+-(void)initcenterLine:(NSMutableArray *)seatsArray{
     ZFCenterLineView *centerLine = [[ZFCenterLineView alloc]init];
     centerLine.backgroundColor = [UIColor clearColor];
     centerLine.width = 1;
-    centerLine.height = CGRectGetMaxY(self.seatView.frame) + 2 * ZFSmallMargin ;
+    centerLine.height = seatsArray.count * ZFseastNomarW_H + 2 * ZFSmallMargin ;
     self.centerLine = centerLine;
     self.centerLine.centerX = self.seatView.centerX;
     self.centerLine.y = self.seatScrollView.contentOffset.y + ZFCenterLineY;
@@ -130,7 +130,7 @@
 }
 
 -(void)initSeatsView:(NSMutableArray *)seatsArray{
-   __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     ZFSeatsView *seatView = [[ZFSeatsView alloc]initWithSeatsArray:seatsArray maxNomarWidth:self.width seatBtnActionBlock:^(ZFSeatButton *seatbtn) {
         [weakSelf.indicator updateMiniImageView];
         if (seatbtn.selected) {
@@ -142,7 +142,7 @@
                 return ;
             }
         };
-
+        
         if (weakSelf.actionBlock) weakSelf.actionBlock(weakSelf.seatBtns);
         if (weakSelf.seatScrollView.maximumZoomScale - weakSelf.seatScrollView.zoomScale < 0.1) return;//设置座位放大
         CGFloat maximumZoomScale = weakSelf.seatScrollView.maximumZoomScale;
@@ -226,10 +226,11 @@
     self.hallLogo.centerX = self.seatView.centerX;
     self.maoyanLogo.centerX = self.seatView.centerX;
     [self.indicator updateMiniIndicator];
+    [self scrollViewDidEndDecelerating:scrollView];
 }
 
 -(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{
-     
+    
     self.hallLogo.centerX = self.seatView.centerX;
     self.hallLogo.y = scrollView.contentOffset.y;
     self.centerLine.centerX = self.seatView.centerX;
