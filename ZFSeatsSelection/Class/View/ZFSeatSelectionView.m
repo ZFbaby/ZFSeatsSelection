@@ -153,7 +153,7 @@
             [weakSelf.selecetedSeats addObject:seatBtn];
             if (weakSelf.selecetedSeats.count > ZFMaxSelectedSeatsCount) {
                 seatBtn.selected = !seatBtn.selected;
-                [weakSelf.selecetedSeats removeLastObject];
+                [weakSelf.selecetedSeats removeObject:seatBtn];
                 errorStr = ZFExceededMaximumError;
             }
         }else{

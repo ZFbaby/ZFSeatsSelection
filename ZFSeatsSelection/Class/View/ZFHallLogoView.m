@@ -61,7 +61,8 @@
     
     CGSize strsize =   [self.hallName sizeWithAttributes:attributeName];
     
-    [self.hallName drawAtPoint:CGPointMake(image.size.width / 2 - strsize.width / 2, image.size.height / 2 - strsize.height / 2) withAttributes:attributeName];
+    [self.hallName drawAtPoint:CGPointMake(image.size.width / 2 - strsize.width / 2,image.size.height / 2 - strsize.height / 2)
+                withAttributes:attributeName];
     
     image = UIGraphicsGetImageFromCurrentImageContext();
     
