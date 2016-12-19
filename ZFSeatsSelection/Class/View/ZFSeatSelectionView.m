@@ -3,8 +3,8 @@
 //  ZFSeatSelection
 //
 //  Created by qq 316917975  on 16/7/9.
-//
-//
+//  gitHub地址：https://github.com/ZFbaby
+//  后面还会增加多种样式（格瓦拉，淘票票，微票儿）实现UI可定制效果及开场动画样式，请关注更新！记得点星哦！！！
 
 #import "ZFSeatSelectionView.h"
 #import "ZFSeatsModel.h"
@@ -21,8 +21,8 @@
 @interface ZFSeatSelectionView ()<UIScrollViewDelegate>
 /**seatScrollView*/
 @property (nonatomic, weak) UIScrollView *seatScrollView;
-/**按钮数组*/
-@property (nonatomic, strong) NSMutableArray *seatBtns;
+/**已经选择的按钮数组*/
+@property (nonatomic, strong) NSMutableArray *selecetedSeats;
 /**按钮父控件*/
 @property (nonatomic, weak) ZFSeatsView *seatView;
 /**影院logo*/
@@ -36,42 +36,55 @@
 /**指示框*/
 @property (nonatomic, weak) ZFIndicatorView *indicator;
 
-@property (nonatomic,copy) void (^actionBlock)(id);
+@property (nonatomic,copy) void (^actionBlock)(NSMutableArray *, NSMutableDictionary *, NSString *);
 
 @end
 
 
 @implementation ZFSeatSelectionView
 
--(instancetype)initWithFrame:(CGRect)frame SeatsArray:(NSMutableArray *)seatsArray HallName:(NSString *)hallName seatBtnActionBlock:(void (^)(id))actionBlock{
+-(instancetype)initWithFrame:(CGRect)frame
+                  SeatsArray:(NSMutableArray *)seatsArray
+                    HallName:(NSString *)hallName
+          seatBtnActionBlock:(void (^)(NSMutableArray *, NSMutableDictionary *, NSString *))actionBlock{
     
     if (self = [super initWithFrame:frame]) {//初始化操作
-        self.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1];
+        self.backgroundColor = [UIColor colorWithRed:245.0/255.0
+                                               green:245.0/255.0
+                                                blue:245.0/255.0 alpha:1];
         self.actionBlock = actionBlock;
         [self initScrollView];
         [self initappLogo];
         [self initSeatsView:seatsArray];
         [self initindicator:seatsArray];
         [self initRowIndexView:seatsArray];
-        [self initcenterLine];
+        [self initcenterLine:seatsArray];
         [self inithallLogo:hallName];
         [self  startAnimation];//开场动画
     }
     return self;
 }
 
--(NSMutableArray *)seatBtns{
-    if (!_seatBtns) {
+-(NSMutableArray *)selecetedSeats{
+    if (!_selecetedSeats) {
 
-        _seatBtns = [NSMutableArray array];
+        _selecetedSeats = [NSMutableArray array];
     }
-    return _seatBtns;
+    return _selecetedSeats;
 }
 -(void)startAnimation{
     
-    [UIView animateWithDuration:0.6 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        CGRect zoomRect = [self _zoomRectInView:self.seatScrollView forScale:ZFseastNomarW_H / self.seatView.seatBtnHeight withCenter:CGPointMake(self.seatView.seatViewWidth / 2, 0)];
-        [self.seatScrollView zoomToRect:zoomRect animated:NO];
+    [UIView animateWithDuration:0.5
+                          delay:0.2
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+      
+                         CGRect zoomRect = [self _zoomRectInView:self.seatScrollView
+                                       forScale:ZFseastNomarW_H / self.seatView.seatBtnHeight
+                                     withCenter:CGPointMake(self.seatView.seatViewWidth / 2, 0)];
+       
+                         [self.seatScrollView zoomToRect:zoomRect
+                               animated:NO];
     } completion:nil];
 }
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
@@ -108,11 +121,11 @@
     self.rowindexView = rowindexView;
     [self.seatScrollView addSubview:rowindexView];
 }
--(void)initcenterLine{
+-(void)initcenterLine:(NSMutableArray *)seatsArray{
     ZFCenterLineView *centerLine = [[ZFCenterLineView alloc]init];
     centerLine.backgroundColor = [UIColor clearColor];
     centerLine.width = 1;
-    centerLine.height = CGRectGetMaxY(self.seatView.frame) + 2 * ZFSmallMargin ;
+    centerLine.height = seatsArray.count * ZFseastNomarW_H + 2 * ZFSmallMargin ;
     self.centerLine = centerLine;
     self.centerLine.centerX = self.seatView.centerX;
     self.centerLine.y = self.seatScrollView.contentOffset.y + ZFCenterLineY;
@@ -131,29 +144,39 @@
 
 -(void)initSeatsView:(NSMutableArray *)seatsArray{
    __weak typeof(self) weakSelf = self;
-    ZFSeatsView *seatView = [[ZFSeatsView alloc]initWithSeatsArray:seatsArray maxNomarWidth:self.width seatBtnActionBlock:^(ZFSeatButton *seatbtn) {
+    ZFSeatsView *seatView = [[ZFSeatsView alloc]initWithSeatsArray:seatsArray
+                                                     maxNomarWidth:self.width
+                                                seatBtnActionBlock:^(ZFSeatButton *seatBtn, NSMutableDictionary *allAvailableSeats) {
         [weakSelf.indicator updateMiniImageView];
-        if (seatbtn.selected) {
-            [weakSelf.seatBtns addObject:seatbtn];
+        NSString *errorStr = nil;
+        if (seatBtn.selected) {
+            [weakSelf.selecetedSeats addObject:seatBtn];
+            if (weakSelf.selecetedSeats.count > ZFMaxSelectedSeatsCount) {
+                seatBtn.selected = !seatBtn.selected;
+                [weakSelf.selecetedSeats removeObject:seatBtn];
+                errorStr = ZFExceededMaximumError;
+            }
         }else{
-            if ([weakSelf.seatBtns containsObject:seatbtn]) {
-                [weakSelf.seatBtns removeObject:seatbtn];
-                if (weakSelf.actionBlock) weakSelf.actionBlock(weakSelf.seatBtns);
+            if ([weakSelf.selecetedSeats containsObject:seatBtn]) {
+                [weakSelf.selecetedSeats removeObject:seatBtn];
+                if (weakSelf.actionBlock) weakSelf.actionBlock(weakSelf.selecetedSeats,allAvailableSeats,errorStr);
                 return ;
             }
-        };
-
-        if (weakSelf.actionBlock) weakSelf.actionBlock(weakSelf.seatBtns);
+        }
+        if (weakSelf.actionBlock) weakSelf.actionBlock(weakSelf.selecetedSeats,allAvailableSeats,errorStr);
         if (weakSelf.seatScrollView.maximumZoomScale - weakSelf.seatScrollView.zoomScale < 0.1) return;//设置座位放大
         CGFloat maximumZoomScale = weakSelf.seatScrollView.maximumZoomScale;
-        CGRect zoomRect = [weakSelf _zoomRectInView:weakSelf.seatScrollView forScale:maximumZoomScale withCenter:CGPointMake(seatbtn.centerX, seatbtn.centerY)];
+        CGRect zoomRect = [weakSelf _zoomRectInView:weakSelf.seatScrollView forScale:maximumZoomScale withCenter:CGPointMake(seatBtn.centerX, seatBtn.centerY)];
         [weakSelf.seatScrollView zoomToRect:zoomRect animated:YES];
     }];
     self.seatView = seatView;
     seatView.frame = CGRectMake(0, 0,seatView.seatViewWidth, seatView.seatViewHeight);
     [self.seatScrollView insertSubview:seatView atIndex:0];
     self.seatScrollView.maximumZoomScale = ZFseastMaxW_H / seatView.seatBtnWidth;
-    self.seatScrollView.contentInset = UIEdgeInsetsMake(ZFseastsColMargin, (self.width - seatView.seatViewWidth)/2,ZFseastsColMargin,(self.width - seatView.seatViewWidth)/2);
+    self.seatScrollView.contentInset = UIEdgeInsetsMake(ZFseastsColMargin,
+                                                        (self.width - seatView.seatViewWidth)/2,
+                                                        ZFseastsColMargin,
+                                                        (self.width - seatView.seatViewWidth)/2);
 }
 -(void)initindicator:(NSMutableArray *)seatsArray{
     
@@ -173,7 +196,9 @@
         Ratio = (self.width - 2 * ZFseastsRowMargin) / MaxWidth;
     }
     
-    ZFIndicatorView *indicator = [[ZFIndicatorView alloc]initWithView:self.seatView withRatio:Ratio withScrollView:self.seatScrollView];
+    ZFIndicatorView *indicator = [[ZFIndicatorView alloc]initWithView:self.seatView
+                                                            withRatio:Ratio
+                                                       withScrollView:self.seatScrollView];
     indicator.x = 3;
     indicator.y = 3 * 3;
     indicator.width = MaxWidth;
@@ -226,6 +251,7 @@
     self.hallLogo.centerX = self.seatView.centerX;
     self.maoyanLogo.centerX = self.seatView.centerX;
     [self.indicator updateMiniIndicator];
+    [self scrollViewDidEndDecelerating:scrollView];
 }
 
 -(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{

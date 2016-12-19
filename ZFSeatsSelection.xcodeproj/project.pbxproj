@@ -49,6 +49,7 @@
 		36E78E791D51804000920DFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E78E771D51804000920DFA /* LaunchScreen.storyboard */; };
 		36E78E7A1D51804000920DFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36E78E781D51804000920DFA /* Main.storyboard */; };
 		36E78E7D1D51806800920DFA /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E78E7C1D51806800920DFA /* UIView+Extension.m */; };
+		9D80BE281DF08253004A3BED /* ZFSeatSelectionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D80BE271DF08253004A3BED /* ZFSeatSelectionTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,8 +143,10 @@
 		36E78E711D517F6000920DFA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		36E78E771D51804000920DFA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36E78E781D51804000920DFA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		36E78E7B1D51806800920DFA /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
-		36E78E7C1D51806800920DFA /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		36E78E7B1D51806800920DFA /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Extension.h"; path = "../../UIView+Extension.h"; sourceTree = "<group>"; };
+		36E78E7C1D51806800920DFA /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extension.m"; path = "../../UIView+Extension.m"; sourceTree = "<group>"; };
+		9D80BE261DF08253004A3BED /* ZFSeatSelectionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFSeatSelectionTool.h; sourceTree = "<group>"; };
+		9D80BE271DF08253004A3BED /* ZFSeatSelectionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFSeatSelectionTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,8 +207,6 @@
 				36E78E131D517EF700920DFA /* Class */,
 				36E78DE31D517EBA00920DFA /* AppDelegate.h */,
 				36E78DE41D517EBA00920DFA /* AppDelegate.m */,
-				36E78E7B1D51806800920DFA /* UIView+Extension.h */,
-				36E78E7C1D51806800920DFA /* UIView+Extension.m */,
 				36E78DEC1D517EBA00920DFA /* Assets.xcassets */,
 				36E78DF11D517EBA00920DFA /* Info.plist */,
 				36E78DE01D517EBA00920DFA /* Supporting Files */,
@@ -276,6 +277,8 @@
 		36E78E1E1D517EF700920DFA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				36E78E7B1D51806800920DFA /* UIView+Extension.h */,
+				36E78E7C1D51806800920DFA /* UIView+Extension.m */,
 				36E78E1F1D517EF700920DFA /* ZFAppLogoView.h */,
 				36E78E201D517EF700920DFA /* ZFAppLogoView.m */,
 				36E78E211D517EF700920DFA /* ZFCenterLineView.h */,
@@ -291,6 +294,8 @@
 				36E78E2B1D517EF700920DFA /* ZFSeatSelectionConfig.h */,
 				36E78E2C1D517EF700920DFA /* ZFSeatSelectionView.h */,
 				36E78E2D1D517EF700920DFA /* ZFSeatSelectionView.m */,
+				9D80BE261DF08253004A3BED /* ZFSeatSelectionTool.h */,
+				9D80BE271DF08253004A3BED /* ZFSeatSelectionTool.m */,
 				36E78E2E1D517EF700920DFA /* ZFSeatsView.h */,
 				36E78E2F1D517EF700920DFA /* ZFSeatsView.m */,
 			);
@@ -501,6 +506,7 @@
 				36E78E371D517EF700920DFA /* ZFIndicatorView.m in Sources */,
 				36E78E3B1D517EF700920DFA /* ZFSeatsView.m in Sources */,
 				36E78E601D517F1C00920DFA /* NSObject+MJProperty.m in Sources */,
+				9D80BE281DF08253004A3BED /* ZFSeatSelectionTool.m in Sources */,
 				36E78E5C1D517F1C00920DFA /* MJPropertyType.m in Sources */,
 				36E78E761D517F6000920DFA /* README.md in Sources */,
 				36E78DE21D517EBA00920DFA /* main.m in Sources */,

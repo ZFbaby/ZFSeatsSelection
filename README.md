@@ -2,7 +2,10 @@
 ![image](https://github.com/ZFbaby/ZFSeatsSelection/blob/master/ZFSeatsSelection/仿猫眼gif1.gif?raw=true)
 
 ## 功能简介 （Features）
-   
+ 
+* 座位落单判断（新增加功能）
+*  （Single seat judgment）
+  
 *  影厅logo可根据座位图左右移动
 *  （The auditorium can be moved according to the seat map about logo）
      
