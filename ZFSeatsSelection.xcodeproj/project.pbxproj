@@ -25,7 +25,6 @@
 		36E78E3A1D517EF700920DFA /* ZFSeatSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E78E2D1D517EF700920DFA /* ZFSeatSelectionView.m */; };
 		36E78E3B1D517EF700920DFA /* ZFSeatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E78E2F1D517EF700920DFA /* ZFSeatsView.m */; };
 		36E78E561D517F1C00920DFA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E78E3E1D517F1C00920DFA /* MBProgressHUD.m */; };
-		36E78E571D517F1C00920DFA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36E78E401D517F1C00920DFA /* Info.plist */; };
 		36E78E581D517F1C00920DFA /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E78E431D517F1C00920DFA /* MJExtensionConst.m */; };
 		36E78E591D517F1C00920DFA /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E78E451D517F1C00920DFA /* MJFoundation.m */; };
 		36E78E5A1D517F1C00920DFA /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E78E471D517F1C00920DFA /* MJProperty.m */; };
@@ -109,7 +108,6 @@
 		36E78E2F1D517EF700920DFA /* ZFSeatsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFSeatsView.m; sourceTree = "<group>"; };
 		36E78E3D1D517F1C00920DFA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		36E78E3E1D517F1C00920DFA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		36E78E401D517F1C00920DFA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36E78E411D517F1C00920DFA /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
 		36E78E421D517F1C00920DFA /* MJExtensionConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
 		36E78E431D517F1C00920DFA /* MJExtensionConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJExtensionConst.m; sourceTree = "<group>"; };
@@ -315,7 +313,6 @@
 		36E78E3F1D517F1C00920DFA /* MJExtension */ = {
 			isa = PBXGroup;
 			children = (
-				36E78E401D517F1C00920DFA /* Info.plist */,
 				36E78E411D517F1C00920DFA /* MJExtension.h */,
 				36E78E421D517F1C00920DFA /* MJExtensionConst.h */,
 				36E78E431D517F1C00920DFA /* MJExtensionConst.m */,
@@ -436,6 +433,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -461,7 +459,6 @@
 				36E78E741D517F6000920DFA /* 仿猫眼gif3.gif in Resources */,
 				36E78E6C1D517F2300920DFA /* seats 4.plist in Resources */,
 				36E78E691D517F2300920DFA /* seats 1.plist in Resources */,
-				36E78E571D517F1C00920DFA /* Info.plist in Resources */,
 				36E78E6B1D517F2300920DFA /* seats 3.plist in Resources */,
 				36E78E7A1D51804000920DFA /* Main.storyboard in Resources */,
 				36E78E681D517F2300920DFA /* seats 0.plist in Resources */,
