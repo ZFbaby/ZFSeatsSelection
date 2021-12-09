@@ -33,11 +33,8 @@
     [maoyanLabel sizeToFit];
     maoyanLabel.font = [UIFont systemFontOfSize:25];
     maoyanLabel.textColor = [UIColor redColor];
-    
     self.navigationItem.titleView = maoyanLabel;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.extendedLayoutIncludesOpaqueBars = NO;
-    self.modalPresentationCapturesStatusBarAppearance = NO;
+
     MBProgressHUD *HUD = [[MBProgressHUD alloc]initWithView:self.view];
     
     HUD.tintColor = [UIColor blackColor];

@@ -241,6 +241,7 @@
 		36E78E131D517EF700920DFA /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				CB731A192761F8D100B05121 /*  Tool */,
 				36E78E141D517EF700920DFA /* Controller */,
 				36E78E191D517EF700920DFA /* Model */,
 				36E78E1E1D517EF700920DFA /* View */,
@@ -292,8 +293,6 @@
 				36E78E2B1D517EF700920DFA /* ZFSeatSelectionConfig.h */,
 				36E78E2C1D517EF700920DFA /* ZFSeatSelectionView.h */,
 				36E78E2D1D517EF700920DFA /* ZFSeatSelectionView.m */,
-				9D80BE261DF08253004A3BED /* ZFSeatSelectionTool.h */,
-				9D80BE271DF08253004A3BED /* ZFSeatSelectionTool.m */,
 				36E78E2E1D517EF700920DFA /* ZFSeatsView.h */,
 				36E78E2F1D517EF700920DFA /* ZFSeatsView.m */,
 			);
@@ -348,6 +347,15 @@
 				36E78E671D517F2300920DFA /* seats 4.plist */,
 			);
 			path = Resouce;
+			sourceTree = "<group>";
+		};
+		CB731A192761F8D100B05121 /*  Tool */ = {
+			isa = PBXGroup;
+			children = (
+				9D80BE261DF08253004A3BED /* ZFSeatSelectionTool.h */,
+				9D80BE271DF08253004A3BED /* ZFSeatSelectionTool.m */,
+			);
+			path = " Tool";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -103,7 +103,7 @@
 }
 -(void)initappLogo{
     ZFAppLogoView *maoyanLogo = [[ZFAppLogoView alloc]init];
-    maoyanLogo.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    maoyanLogo.backgroundColor = [UIColor clearColor];
     maoyanLogo.y = self.height - ZFseastsRowMargin;
     maoyanLogo.width = ZFAppLogoW;
     maoyanLogo.height = ZFseastsRowMargin;
